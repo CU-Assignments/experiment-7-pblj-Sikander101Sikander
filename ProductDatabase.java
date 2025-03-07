@@ -12,7 +12,7 @@ public class ProductDatabase {
              
             Class.forName("com.mysql.cj.jdbc.Driver");
             dbConn.setAutoCommit(false);
-            System.out.println("✅ Connected to the database!");
+            System.out.println("✔️ Connected to the database!");
 
             while (true) {
                 System.out.println("\nChoose an operation:");
@@ -33,13 +33,13 @@ public class ProductDatabase {
                         System.out.println(" Exiting program...");
                         return;
                     }
-                    default -> System.out.println(" Invalid choice. Try again!");
+                    default -> System.out.println("❌ Invalid choice. Try again!");
                 }
             }
         } catch (ClassNotFoundException e) {
-            System.out.println(" MySQL JDBC Driver Not Found!");
+            System.out.println("❌ MySQL JDBC Driver Not Found!");
         } catch (SQLException e) {
-            System.out.println(" Database Connection Error!");
+            System.out.println("❌ Database Connection Error!");
         }
     }
 
@@ -66,7 +66,7 @@ public class ProductDatabase {
                 stmt.setInt(4, qty);
                 stmt.executeUpdate();
                 dbConn.commit();
-                System.out.println("✅ Product added successfully!");
+                System.out.println("✔️ Product added successfully!");
             }
         } catch (SQLException e) {
             dbConn.rollback();
@@ -100,7 +100,7 @@ public class ProductDatabase {
                 stmt.setInt(2, id);
                 int rows = stmt.executeUpdate();
                 dbConn.commit();
-                System.out.println(rows > 0 ? "✅ Price updated successfully!" : "❌ Product not found!");
+                System.out.println(rows > 0 ? "✔️ Price updated successfully!" : "❌ Product not found!");
             }
         } catch (SQLException e) {
             dbConn.rollback();
@@ -118,7 +118,7 @@ public class ProductDatabase {
                 stmt.setInt(1, id);
                 int rows = stmt.executeUpdate();
                 dbConn.commit();
-                System.out.println(rows > 0 ? "✅ Product deleted successfully!" : "❌ Product not found!");
+                System.out.println(rows > 0 ? "✔️ Product deleted successfully!" : "❌ Product not found!");
             }
         } catch (SQLException e) {
             dbConn.rollback();
@@ -126,4 +126,3 @@ public class ProductDatabase {
         }
     }
 }
-
